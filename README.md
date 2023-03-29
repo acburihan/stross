@@ -6,27 +6,44 @@ See the forked version we've based ourselves on at https://github.com/futscdav/s
 
 We've created altered versions of the stross.py file with different distances for the content loss.
 
-In strossEuclidianDistance.py we've deleted the original cosine distance and used only the euclidian distance already defined, thus it doesn't the scale invariance needed for self similarity and the results are unsatisfactory.
+- In strossEuclidianDistance.py we've deleted the original cosine distance and used only the euclidian distance already defined, thus it doesn't the scale invariance needed for self similarity and the results are unsatisfactory.
 
-In stross.py we've used the cosine distance in the content loss, which is the original implementation. This version clearly mantains the scale invariance.
+- In stross.py we've used the cosine distance in the content loss, which is the original implementation. This version clearly mantains the scale invariance.
 
-In strossPearsonDistance.py we've used the pearson distance in the content loss. This version mantains the scale invariance and wields very similar results to the original implementation.
+- In strossPearsonDistance.py we've used the pearson distance in the content loss. This version mantains the scale invariance and wields very similar results to the original implementation.
 
-<img src="https://latex.codecogs.com/gif.latex?d_{X, Y}=1-\rho_{X, Y}" />
-<img src="https://latex.codecogs.com/gif.latex?r_{x y}=\frac{\sum_{i=1}^n\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n\left(y_i-\bar{y}\right)^2}}" />
+<p align="center">
+  <img src="distance.png" width="350" title="Distance">
+</p>
+<p align="center">
+  <img src="pearson.png" width="500" title="Pearson">
+</p>
 
+- In strossAngularPearsonDistance.py we've used the analogous angular formulation of the pearson distance in the content loss. This version still mantains the scale invariance and yields unconsistent results depending on the images used.
 
-In strossAngularPearsonDistance.py we've used the analogous angular formulation of the pearson distance in the content loss. This version still mantains the scale invariance and wields unconsistent results depending on the images used.
-<img src="https://latex.codecogs.com/gif.latex?d_{X, Y}=1-\rho_{X, Y}" />
-<img src="https://latex.codecogs.com/gif.latex?r_{\text {circular }}=\frac{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right) \sin \left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n \sin \left(y_i-\bar{y}\right)^2}}" />
+<p align="center">
+  <img src="distance.png" width="350" title="Distance">
+</p>
+<p align="center">
+  <img src="angp.png" width="500" title="Angular Pearson">
+</p>
 
 Usage:
 ```
-python strotss.py <content> <style> [--weight 1.0] [--output strotss.png] [--device "cuda:0"]
+python strotss{specify which}.py <content> <style> [--weight 1.0] [--output strotss.png] [--device "cuda:0"]
+```
+or if you want to use the scripts for batch processing:
+```
+python script{specify which}.py
+```
+the naming covention for the input images is:
+```
+content{3 digit number}.jpg
+style{3 digit number}.png
 ```
 
 <p align="center">
-  <img src="content.jpg" width="350" title="Content">
-  <img src="style.png" width="350" alt="Style">
+  <img src="content001.jpg" width="350" title="Content">
+  <img src="style001.png" width="350" alt="Style">
   <img src="strotss.png" width="350" alt="Result">
 </p>
