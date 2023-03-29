@@ -1,12 +1,19 @@
 import os
 
-for i in range(1, 7):
-    content_file = f"content-00{i}.jpg"
-    style_file = f"style-00{i}.jpg"
-    output_file = f"euclidian-00{i}.png"
-    weight = "1.0"
-    # device = "\"mps:0\""
-    device = "\"cuda:0\""
+images = int(input("How many images as input? Name the files content001.jpg, style001.jpg, etc. "))
+weight = float(input("What weight? Default is 1.0:"))
+device = int(input("What device? 0 for MPS, 1 for CUDA: "))
+
+
+for i in range(1, images):
+    content_file = f"content{i:03d}.jpg"
+    style_file = f"style{i:03d}.png"
+    output_file = f"euclidian{i:03d}.png"
+    weight = f"{weight:.1f}"
+    if device == 1:
+        device = "\"cuda:0\""
+    else:
+        device = "\"mps:0\""
     command = f"python3 strotssEuclidianDistance.py {content_file} {style_file} --weight {weight} --output {output_file} --device {device}"
     os.system(command)
 
