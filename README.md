@@ -11,21 +11,14 @@ In strossEuclidianDistance.py we've deleted the original cosine distance and use
 In stross.py we've used the cosine distance in the content loss, which is the original implementation. This version clearly mantains the scale invariance.
 
 In strossPearsonDistance.py we've used the pearson distance in the content loss. This version mantains the scale invariance and wields very similar results to the original implementation.
-\begin{equation}
-d_{X, Y}=1-\rho_{X, Y}
-\end{equation}
-\begin{equation}
-r_{x y}=\frac{\sum_{i=1}^n\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n\left(y_i-\bar{y}\right)^2}}
-\end{equation}
+
+<img src="https://latex.codecogs.com/gif.latex?d_{X, Y}=1-\rho_{X, Y}" />
+<img src="https://latex.codecogs.com/gif.latex?r_{x y}=\frac{\sum_{i=1}^n\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n\left(y_i-\bar{y}\right)^2}}" />
 
 
 In strossAngularPearsonDistance.py we've used the analogous angular formulation of the pearson distance in the content loss. This version still mantains the scale invariance and wields unconsistent results depending on the images used.
-\begin{equation}
-d_{X, Y}=1-\rho_{X, Y}
-\end{equation}
-\begin{equation}
-r_{\text {circular }}=\frac{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right) \sin \left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n \sin \left(y_i-\bar{y}\right)^2}}
-\end{equation}
+<img src="https://latex.codecogs.com/gif.latex?d_{X, Y}=1-\rho_{X, Y}" />
+<img src="https://latex.codecogs.com/gif.latex?r_{\text {circular }}=\frac{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right) \sin \left(y_i-\bar{y}\right)}{\sqrt{\sum_{i=1}^n \sin \left(x_i-\bar{x}\right)^2} \sqrt{\sum_{i=1}^n \sin \left(y_i-\bar{y}\right)^2}}" />
 
 Usage:
 ```
